@@ -6,7 +6,8 @@ This file provides guidance to AI assistants (Claude and others) when working wi
 
 **Owner:** yangyayun2016
 **Repository:** yangyayun
-**Status:** New / Empty — no source code has been committed yet.
+**Status:** New — first site is [www.helabs.fun](https://www.helabs.fun). No application source yet.
+**Payments:** Sentra (Dodo Payments). The retired IDE extension is replaced by the Dodo Agent Plugin.
 
 This file will be updated as the project evolves to reflect the actual codebase structure, conventions, and workflows.
 
@@ -71,8 +72,25 @@ As the codebase is built out, update this file to document:
 ### Directory Structure
 
 ```
-<to be documented once source files are added>
+.cursor/mcp.json    # Dodo Payments MCP servers for this site
 ```
+
+### Sentra / Dodo Payments
+
+Sentra’s IDE extension is retired. This repo uses its replacement, the Dodo Agent Plugin (v0.6.5), so billing work for www.helabs.fun stays inside the editor.
+
+Editor install (already done in this environment):
+
+```bash
+git clone https://github.com/dodopayments/dodo-agent-plugin.git ~/.cursor/plugins/local/dodo-agent-plugin
+```
+
+Restart the editor after cloning. Skills load from `skills/`; MCP servers load from the plugin’s `.mcp.json`. The project file `.cursor/mcp.json` registers the same two servers for anyone who opens this repo:
+
+- `dodo-knowledge` — documentation search, no credentials
+- `dodopayments-api` — live account access via browser OAuth (no API key in the repo)
+
+Use test mode until the site is ready to charge real customers. Never commit API keys or webhook secrets.
 
 ### Build & Run Commands
 
@@ -96,6 +114,8 @@ As the codebase is built out, update this file to document:
 - Framework(s): _TBD_
 - Package manager: _TBD_
 - CI/CD: _TBD_
+- Payments: Dodo Payments via the Sentra successor plugin (Dodo Agent Plugin)
+- Site: www.helabs.fun
 
 ### Environment Setup
 
